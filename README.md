@@ -1,1 +1,1 @@
-# SolvedLabaTraining
+# laba.solvd.training
