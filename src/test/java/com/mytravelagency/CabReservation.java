@@ -11,13 +11,29 @@ import java.util.Date;
  */
 public class CabReservation extends Reservation {
 
-	protected Date pickupTime;
-	protected Date dropoffTime;
+	private Date pickupTime;
+	private Date dropoffTime;
 	
 	
 	public CabReservation(Date pickupTime, Date dropoffTime, double price) {
 		super(price);
+		this.setPickupTime(pickupTime);
+		this.setDropoffTime(dropoffTime);
+	}
+	
+	public Date getPickupTime() {
+		return pickupTime;
+	}
+
+	public void setPickupTime(Date pickupTime) {
 		this.pickupTime = pickupTime;
+	}
+
+	public Date getDropoffTime() {
+		return dropoffTime;
+	}
+
+	public void setDropoffTime(Date dropoffTime) {
 		this.dropoffTime = dropoffTime;
 	}
 	
@@ -31,6 +47,8 @@ public class CabReservation extends Reservation {
 		System.out.println("Cab is Cancelled");
 		
 	}
+
+	
 	
 	
 	

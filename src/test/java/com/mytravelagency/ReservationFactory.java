@@ -28,6 +28,10 @@ public class ReservationFactory {
 		return new BusReservation(originLocation, destinationLocation, travelDate, price);
 	};
 	
+	public static CabReservation createCabReservation(Date pickupTime, Date dropoffTime, double price) {	
+		return new CabReservation(pickupTime, dropoffTime, price);
+	};
+	
 	public static HotelReservation createHotelReservation(String hotelName, LocalDate checkInDate, LocalDate checkOutDate, 
 			String roomType, double price) {	
 		return new HotelReservation(hotelName, checkInDate, checkOutDate, roomType, price);

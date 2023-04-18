@@ -35,7 +35,7 @@ public class FlightReservation extends Reservation {
 		return flightNumber;
 	}
 
-	public void setFlightNumber(String flightNumber) {
+	private void setFlightNumber(String flightNumber) {
 		this.flightNumber = flightNumber;
 	}
 
