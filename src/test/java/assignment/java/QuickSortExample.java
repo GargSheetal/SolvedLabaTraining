@@ -2,6 +2,9 @@ package assignment.java;
 
 import java.util.Random;
 
+/*
+ * [6, 2, 9, 2, 3, 7, 1, 5]
+ */
 
 public class QuickSortExample {
 
@@ -10,6 +13,7 @@ public class QuickSortExample {
 		Random random = new Random();
 		int[] nums = new int[10];
 		
+		// Randomly selecting values in the array
 		for(int i=0; i<nums.length; i++)
 		{
 			nums[i] = random.nextInt(100);
@@ -25,61 +29,61 @@ public class QuickSortExample {
 
 	}
 	
-	public static void quicksort(int[] array) {
-		
-		quicksort(array, 0, array.length -1);
+	private static void quicksort(int[] arr) {
+		quicksort(arr, 0, arr.length -1);
 	}
 	
-	public static void quicksort(int[] array, int lowIndex, int highIndex) {
+	private static void quicksort(int[] arr, int lowIndex, int highIndex) {
 		
 		if(lowIndex >= highIndex) {
 			return;
 		}
 		
+		// selecting the pivot randomly and swapping with the highIndex of the array
 		int pivotIndex = new Random().nextInt(highIndex - lowIndex) + lowIndex;
-		int pivot = array[pivotIndex];
-		swap(array, pivotIndex, highIndex);
+		int pivot = arr[pivotIndex];
+		swap(arr, pivotIndex, highIndex);
 		
-		int leftPointer = partition(array, lowIndex, highIndex, pivot);
+		int leftRef = partition(arr, lowIndex, highIndex, pivot);
 		
-		quicksort(array, lowIndex, leftPointer-1);
-		quicksort(array, leftPointer+1, highIndex);
+		quicksort(arr, lowIndex, leftRef-1);
+		quicksort(arr, leftRef+1, highIndex);
 		
 	}
 
-	private static int partition(int[] array, int lowIndex, int highIndex, int pivot) {
+	private static int partition(int[] arr, int lowIndex, int highIndex, int pivot) {
 		
-		int leftPointer = lowIndex;
-		int rightPointer = highIndex;
+		int leftRef = lowIndex;
+		int rightRef = highIndex;
 		
-		while(leftPointer < rightPointer) {
+		while(leftRef < rightRef) {
 			
-			while(array[leftPointer] <= pivot && leftPointer < rightPointer) {
-				leftPointer++;
+			while(arr[leftRef] <= pivot && leftRef < rightRef) {
+				leftRef++;
 			}
 			
-			while(array[rightPointer] >= pivot && leftPointer < rightPointer) {
-				rightPointer--;
+			while(arr[rightRef] >= pivot && leftRef < rightRef) {
+				rightRef--;
 			}
 			
-			swap(array, leftPointer, rightPointer);
+			swap(arr, leftRef, rightRef);
 		}
 		
-		swap(array, leftPointer, highIndex);
-		return leftPointer;
+		swap(arr, leftRef, highIndex);
+		return leftRef;
 	}
 	
-	public static void swap(int[] array, int index1, int index2) {
+	private static void swap(int[] arr, int index1, int index2) {
 		
-		int temp = array[index1];
-		array[index1] = array[index2];
-		array[index2] = temp;
+		int temp = arr[index1];
+		arr[index1] = arr[index2];
+		arr[index2] = temp;
 		
 	}
 	
-	public static void printArray(int array[]) {
+	private static void printArray(int arr[]) {
 			
-		for(int i: array) {
+		for(int i: arr) {
 			System.out.println(i);
 		}
 	}
