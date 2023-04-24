@@ -1,4 +1,4 @@
-package com.mytravelagencyV2;
+package com.mytravelagencyV3;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ public class Main {
 	static Scanner scanner = new Scanner(System.in);
 	static Trip trip = new Trip();
 	
-	private static FlightReservation flightReservationMenuItem() {
+	private static IFlightReservation flightReservationMenuItem() {
 		System.out.print("Enter origin airport : ");
 		String originAirport = scanner.nextLine();
 		
@@ -24,26 +24,41 @@ public class Main {
 		
 		List<Flight> searchFlightResults = Flight.search(originAirport, destinationAirport, departureDate);
 		System.out.println("\nSearch Results -----");
-		Flight.printFlightList(searchFlightResults);
+		for(Flight flight: searchFlightResults)
+		{
+			System.out.println(
+					(searchFlightResults.indexOf(flight) + 1) + " | " +
+					flight.toString()
+					);
+		}
+//		Flight.printFlightList(searchFlightResults);
 		
 		System.out.println("\nSet Filters : ");
 		
-		System.out.print("Enter max price (default is 0.0) : ");
+		System.out.print("Enter max price : ");
 		double maxPrice = scanner.nextDouble();scanner.nextLine();
 		
-		System.out.print("Enter max number of stops (default is 0) : ");
+		System.out.print("Enter max number of stops : ");
 		int maxNoOfStops = scanner.nextInt();scanner.nextLine();
 		
 		List<Flight> filterFlightResults = Flight.filter(searchFlightResults, maxPrice, maxNoOfStops);
 		System.out.println("\nFiltered Results -----");
-		Flight.printFlightList(filterFlightResults);
+//		Flight.printFlightList(filterFlightResults);
+		for(Flight flight: filterFlightResults)
+		{
+			System.out.println(
+					(filterFlightResults.indexOf(flight) + 1) + " | " +
+					flight.toString()
+					);
+		}
 		
 		System.out.print("Select your flight : ");
 		int selectedFlightIdx = scanner.nextInt();scanner.nextLine();
 		
 		Flight selectedFlight = filterFlightResults.get(selectedFlightIdx - 1);
 		System.out.println("\nFlight Selected -----");
-		Flight.printFlight(selectedFlight);
+//		Flight.printFlight(selectedFlight);
+		System.out.println(selectedFlight.toString());
 		
 		System.out.print("\nCustomer Name : ");
 		String customerName = scanner.nextLine();
@@ -56,19 +71,22 @@ public class Main {
 		Boolean needSpecialAssistance = scanner.nextBoolean();scanner.nextLine();
 		System.out.print("needMealService : ");
 		Boolean needMealService = scanner.nextBoolean();scanner.nextLine();
-		
-		System.out.print("Confirm Reservation : ");
-		scanner.nextBoolean(); scanner.nextLine();
-		
-		FlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight, customerName, customerEmail, customerPhone);
+	
+//		FlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight, customerName, customerEmail, customerPhone);
+		IFlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight);
+		flightReservation.getCustomer().setCustomerName(customerName);
+		flightReservation.getCustomer().setCustomerEmail(customerEmail);
+		flightReservation.getCustomer().setCustomerPhone(customerPhone);
 		flightReservation.setNeedSpecialAssistance(needSpecialAssistance);
 		flightReservation.setNeedMealService(needMealService);
 		flightReservation.confirmReservation();
-		FlightReservation.printFlightReservation(flightReservation);
+//		FlightReservation.printFlightReservation(flightReservation);
+		System.out.println(flightReservation.toString());
 		return flightReservation;
+		
 	}
 	
-	private static HotelReservation hotelReservationMenuItem() {
+	private static IHotelReservation hotelReservationMenuItem() {
 		
 		System.out.print("Enter location : ");
 		String location = scanner.nextLine();
@@ -76,12 +94,21 @@ public class Main {
 		System.out.print("Enter date of stay : ");
 		String dateOfStay = scanner.nextLine();
 		
-		List<Hotel> searchHotelResults = Hotel.search(dateOfStay, location);
+		List<Hotel> searchHotelResults = Hotel.search(location, dateOfStay);
 		System.out.println("\nSearch Results -----");
-		Hotel.printHotelList(searchHotelResults);
+		
+		for(Hotel hotel: searchHotelResults)
+		{
+			System.out.println(
+					(searchHotelResults.indexOf(hotel) + 1) + " | " +
+					hotel.toString()
+					);
+		}
+		
+	//	Hotel.printHotelList(searchHotelResults);
 		
 		System.out.println("\nSet Filters : ");
-		System.out.print("Enter max price (default is 0.0) : ");
+		System.out.print("Enter max price : ");
 		double maxPrice = scanner.nextDouble(); scanner.nextLine();
 		
 		System.out.print("Enter a room type : ");
@@ -89,14 +116,22 @@ public class Main {
 		
 		List<Hotel> filteredHotelResults = Hotel.filter(searchHotelResults, maxPrice, roomType);
 		System.out.println("\nFiltered results: ");
-		Hotel.printHotelList(filteredHotelResults);
+		
+		for(Hotel hotel: filteredHotelResults) 
+		{
+			System.out.println(
+					(filteredHotelResults.indexOf(hotel) + 1) + " | " +
+						hotel.toString()
+					);
+		}
+	//	Hotel.printHotelList(filteredHotelResults);
 		
 		System.out.print("Select your hotel : ");
 		int selectedHotelIdx = scanner.nextInt();scanner.nextLine();
 		
 		Hotel selectedHotel = filteredHotelResults.get(selectedHotelIdx - 1);
 		System.out.println("\nHotel Selected -----");
-		Hotel.printHotel(selectedHotel);
+		System.out.println(selectedHotel.toString());
 		
 		System.out.print("\nCustomer Name : ");
 		String customerName = scanner.nextLine();
@@ -111,19 +146,19 @@ public class Main {
 		System.out.print("needFreeInternet : ");
 		boolean needFreeInternet = scanner.nextBoolean(); scanner.nextLine();
 		
-		System.out.print("Confirm Reservation : ");
-		scanner.nextBoolean(); scanner.nextLine();
-		
-		HotelReservation hotelReservation = ReservationFactory.createHotelReservation(selectedHotel, customerName, customerEmail, customerPhone);
-		hotelReservation.setFreeBreakfast(needFreeBreakfast);
-		hotelReservation.setFreeInternet(needFreeInternet);
+		IHotelReservation hotelReservation = ReservationFactory.createHotelReservation(selectedHotel);
+		hotelReservation.getCustomer().setCustomerName(customerName);
+		hotelReservation.getCustomer().setCustomerEmail(customerEmail);
+		hotelReservation.getCustomer().setCustomerPhone(customerPhone);
+		hotelReservation.setNeedFreeBreakfast(needFreeBreakfast);
+		hotelReservation.setNeedFreeInternet(needFreeInternet);
 		hotelReservation.confirmReservation();
-		HotelReservation.printHotelReservation(hotelReservation);
+		System.out.println(hotelReservation.toString());
 		
 		return hotelReservation;
 	}
 	
-	private static CarReservation carReservationMenuItem() {
+	private static ICarReservation carReservationMenuItem() {
 		
 		System.out.print("Enter location : ");
 		String location = scanner.nextLine();
@@ -136,10 +171,17 @@ public class Main {
 		
 		List<Car> searchCarResults = Car.search(location, pickupDate, dropOffDate);
 		System.out.println("\nSearch Results -----");
-		Car.printCarList(searchCarResults);
+		//Car.printCarList(searchCarResults);
+		for(Car car: searchCarResults)
+		{
+			System.out.println(
+					(searchCarResults.indexOf(car) + 1) + " | " +
+					car.toString()
+					);
+		}
 		
 		System.out.println("\nSet Filters : ");
-		System.out.print("Enter max price (default is 0.0) : ");
+		System.out.print("Enter max price : ");
 		double maxPrice = scanner.nextDouble(); scanner.nextLine();
 		
 		System.out.print("Enter a carType : ");
@@ -147,14 +189,21 @@ public class Main {
 		
 		List<Car> filteredCarResults = Car.filter(searchCarResults, maxPrice, carType);
 		System.out.println("\nFiltered results: ");
-		Car.printCarList(filteredCarResults);
+	//	Car.printCarList(filteredCarResults);
+		for(Car car: filteredCarResults)
+		{
+			System.out.println(
+					(filteredCarResults.indexOf(car) + 1) + " | " +
+					car.toString()
+					);
+		}
 		
 		System.out.print("Select your car : ");
 		int selectedCarIdx = scanner.nextInt();scanner.nextLine();
 		
 		Car selectedCar = filteredCarResults.get(selectedCarIdx - 1);
 		System.out.println("\nCar Selected -----");
-		Car.printCar(selectedCar);
+		System.out.println(selectedCar.toString());
 		
 		System.out.print("\nCustomer Name : ");
 		String customerName = scanner.nextLine();
@@ -168,10 +217,13 @@ public class Main {
 		System.out.print("Confirm Reservation : ");
 		scanner.nextBoolean(); scanner.nextLine();
 		
-		CarReservation carReservation = ReservationFactory.createCarReservation(selectedCar, customerName, customerEmail, customerPhone);
+		ICarReservation carReservation = ReservationFactory.createCarReservation(selectedCar);
+		carReservation.getCustomer().setCustomerName(customerName);
+		carReservation.getCustomer().setCustomerEmail(customerEmail);
+		carReservation.getCustomer().setCustomerPhone(customerPhone);
 		carReservation.setNeedCarSeat(needCarSeat);
 		carReservation.confirmReservation();
-		CarReservation.printCarReservation(carReservation);
+		System.out.println(carReservation.toString());
 		
 		return carReservation;
 	}
@@ -201,7 +253,6 @@ public class Main {
 			case 2: trip.addHotelReservation(hotelReservationMenuItem()); addMoreTripReservations(); break;
 			case 3: trip.addCarReservation(carReservationMenuItem()); addMoreTripReservations(); break;
 			default: break;
-			
 			
 		}
 

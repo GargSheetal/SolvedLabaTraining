@@ -52,13 +52,16 @@ public class Trip {
 		System.out.println("\n\n==========================================================");
 		System.out.println("----- Trip Id : " + trip.tripId + " -----");
 		for(FlightReservation flightReservation: trip.flightReservations) {
-			FlightReservation.printFlightReservation(flightReservation);
+			System.out.println(flightReservation.toString());
+//			FlightReservation.printFlightReservation(flightReservation);
 		}
 		for(HotelReservation hotelReservation: trip.hotelReservations) {
 			HotelReservation.printHotelReservation(hotelReservation);
 		}
-		// same for Hotel and Car
-		System.out.println("\n----- Total Amount : " + trip.totalAmount + " -----");
+		for(CarReservation carReservation: trip.carReservations) {
+			CarReservation.printCarReservation(carReservation);
+		}
+		System.out.println("\n----- Total Amount : $" + trip.totalAmount + " -----");
 	}
 
 }

@@ -51,6 +51,30 @@ public class FlightReservation extends Reservation {
 		System.out.println("[SYSTEM] - Flight Reservation Canceled !!");
 		
 	}
+	
+	
+	@Override
+	public String toString() {
+		String s = 
+		"\nFlight Reservation Id : " + getReservationId() + " -----" +
+		"\n" +
+		flight.toString() +
+		"\n" +
+		
+				"Customer : " + 
+				customerName + " | " + 
+				customerEmail + " | " +
+				customerPhone
+		 +
+		"\n" +
+		
+				"Additional Services : " +
+				"\n needMealService : " + needMealService +
+				"\n needSpecialAssistance : " + needSpecialAssistance
+		;
+		
+		return s;
+	}
 
 	public static void printFlightReservation(FlightReservation flightReservation) {
 		System.out.println("\nFlight Reservation Id : " + flightReservation.getReservationId() + " -----");
@@ -63,8 +87,8 @@ public class FlightReservation extends Reservation {
 		);
 		System.out.println(
 				"Additional Services : " +
-				"needMealService : " + flightReservation.needMealService + " | " +
-				"needSpecialAssistance : " + flightReservation.needSpecialAssistance
+				"\n needMealService : " + flightReservation.needMealService +
+				"\n needSpecialAssistance : " + flightReservation.needSpecialAssistance
 		);
 	}
 	

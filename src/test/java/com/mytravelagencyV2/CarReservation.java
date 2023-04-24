@@ -36,14 +36,29 @@ public class CarReservation extends Reservation {
 
 	@Override
 	public void confirmReservation() {
-		System.out.println("Cab is Booked");
+		System.out.println("\n[SYSTEM] - Car is Booked : ");
 		
 	}
 	@Override
 	public void cancelReservation() {
-		System.out.println("Cab is Cancelled");
+		System.out.println("\n[SYSTEM] - Car is Cancelled");
 		
 	}
 
+	
+	public static void printCarReservation(CarReservation carReservation) {
+		System.out.println("\nCar Reservation Id : " + carReservation.getReservationId() + " -----");
+		Car.printCar(carReservation.car);
+		System.out.println(
+				"Customer : " + 
+				carReservation.customerName + " | " + 
+				carReservation.customerEmail + " | " +
+				carReservation.customerPhone
+		);
+		System.out.println(
+				"Additional Services : " +
+				"\n needCarSeat : " + carReservation.needCarSeat
+		);
+	}
 
 }

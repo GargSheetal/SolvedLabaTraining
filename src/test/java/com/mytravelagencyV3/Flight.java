@@ -1,6 +1,5 @@
-package com.mytravelagencyV2;
+package com.mytravelagencyV3;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,15 +8,15 @@ import java.util.List;
  *
  */
 
-public class Flight {
+public final class Flight {
 	
-	private String originAirport;
-	private String destinationAirport;
-	private String departureTimestamp;
-	private String arrivalTimestamp;
-	private String flightNumber;
-	private double price;
-	private int noOfStops;
+	private final String originAirport;
+	private final String destinationAirport;
+	private final String departureTimestamp;
+	private final String arrivalTimestamp;
+	private final String flightNumber;
+	private final double price;
+	private final int noOfStops;
 	
 	public Flight( String flightNumber, String originAirport, String destinationAirport, String departureTimestamp, 
 			String arrivalTimestamp, int noOfStops, double price) {
@@ -34,66 +33,29 @@ public class Flight {
 		return originAirport;
 	}
 
-
-	public void setOriginAirport(String originAirport) {
-		this.originAirport = originAirport;
-	}
-
-
 	public String getDestinationAirport() {
 		return destinationAirport;
 	}
-
-
-	public void setDestinationAirport(String destinationAirport) {
-		this.destinationAirport = destinationAirport;
-	}
-
 
 	public String getDepartureTimestamp() {
 		return departureTimestamp;
 	}
 
-
-	public void setDepartureTimestamp(String departureTimestamp) {
-		this.departureTimestamp = departureTimestamp;
-	}
-
-
 	public String getArrivalTimestamp() {
 		return arrivalTimestamp;
-	}
-
-
-	public void setArrivalTimestamp(String arrivalTimestamp) {
-		this.arrivalTimestamp = arrivalTimestamp;
 	}
 
 	public String getFlightNumber() {
 		return flightNumber;
 	}
 
-
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
-	}
-
 	public double getPrice() {
 		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	public int getNoOfStops() {
 		return noOfStops;
 	}
-
-	public void setNoOfStops(int noOfStops) {
-		this.noOfStops = noOfStops;
-	}
-
 
 	public static List<Flight> search(String originAirport, String destinationAirport, String departureDate) {
 		
@@ -116,27 +78,28 @@ public class Flight {
 	}
 	
 	
-	public static void printFlightList(List<Flight> flights)
-	{
-		
-		for(Flight flight: flights)
-		{
-			System.out.println(
-					(flights.indexOf(flight) + 1) + " | " +
-					flight.getFlightNumber() + " from " +
-					flight.getOriginAirport() + " (" +
-					flight.getDepartureTimestamp() + ") to " +
-					flight.getDestinationAirport() + " (" +
-					flight.getArrivalTimestamp() + ") with " +
-					flight.getNoOfStops() + " stops, $ " +
-					flight.getPrice()
-					);
-		}		
-		
-	}
+//	public static void printFlightList(List<Flight> flights)
+//	{
+//		
+//		for(Flight flight: flights)
+//		{
+//			System.out.println(
+//					(flights.indexOf(flight) + 1) + " | " +
+//					flight.getFlightNumber() + " from " +
+//					flight.getOriginAirport() + " (" +
+//					flight.getDepartureTimestamp() + ") to " +
+//					flight.getDestinationAirport() + " (" +
+//					flight.getArrivalTimestamp() + ") with " +
+//					flight.getNoOfStops() + " stops, $ " +
+//					flight.getPrice()
+//					);
+//		}		
+//		
+//	}
 	
+	// method to return the stringify version of the flight object
 	@Override
-	public String toString() {
+	public final String toString() {
 		String s = (
 				getFlightNumber() + " from " +
 				getOriginAirport() + " (" +
@@ -147,20 +110,6 @@ public class Flight {
 				getPrice()
 		);	
 		return s;
-	}
-	
-	public static void printFlight(Flight flight)
-	{
-			System.out.println(
-					flight.getFlightNumber() + " from " +
-					flight.getOriginAirport() + " (" +
-					flight.getDepartureTimestamp() + ") to " +
-					flight.getDestinationAirport() + " (" +
-					flight.getArrivalTimestamp() + ") with " +
-					flight.getNoOfStops() + " stops, $ " +
-					flight.getPrice()
-			);	
-		
 	}
 	
 	public static List<Flight> filter(List<Flight> flights, double maxPrice, int maxNoOfStops) {

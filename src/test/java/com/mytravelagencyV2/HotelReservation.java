@@ -51,7 +51,7 @@ public class HotelReservation extends Reservation {
 
 	@Override
 	public void cancelReservation() {
-		System.out.println("Hotel Reservation Canceled !!");
+		System.out.println("\n[SYSTEM] - Hotel Reservation Canceled !!");
 		
 	}
 	
@@ -67,8 +67,8 @@ public class HotelReservation extends Reservation {
 		);
 		System.out.println(
 				"Additional Services : " +
-				"freeBreakfast : " + hotelReservation.freeBreakfast + " | " +
-				"freeInternet : " + hotelReservation.freeInternet
+				"\n freeBreakfast : " + hotelReservation.freeBreakfast +
+				"\n freeInternet : " + hotelReservation.freeInternet
 		);
 	}
 	

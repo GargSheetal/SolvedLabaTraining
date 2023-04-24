@@ -1,4 +1,4 @@
-package com.mytravelagencyV2;
+package com.mytravelagencyV3;
 
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
  *
  */
 
-public class Car {
+public final class Car {
 
 	private String location;
 	private String pickupDate;
@@ -100,6 +100,19 @@ public class Car {
 					);
 		}		
 		
+	}
+	
+	@Override
+	public final String toString() {
+		String s = (
+				"Booked " +
+				getCarType() + " at " +
+				getLocation() + " (" +
+				getPickupDate() + " - " +
+				getDropOffDate()  + ") for $" +
+				getPrice() + " per day"
+		);	
+		return s;
 	}
 	
 	public static void printCar(Car car)

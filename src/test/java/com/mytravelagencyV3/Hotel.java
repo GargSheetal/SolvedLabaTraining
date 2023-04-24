@@ -1,4 +1,4 @@
-package com.mytravelagencyV2;
+package com.mytravelagencyV3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
  *
  */
 
-public class Hotel {
+public final class Hotel {
 
-	private String hotelName;
-	private String location;
-	private String roomType;
-	private String availableDate;
-	private double price;
+	private final String hotelName;
+	private final String location;
+	private final String roomType;
+	private final String availableDate;
+	private final double price;
 	
 	public Hotel(String hotelName, String location, String roomType, String availableDate, double price) {
 		
@@ -29,38 +29,24 @@ public class Hotel {
 	public String getAvailableDate() {
 		return availableDate;
 	}
-
-	public void setAvailableDate(String availableDate) {
-		this.availableDate = availableDate;
-	}
-
+	
 	public String getRoomType() {
 		return roomType;
 	}
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
-	}
+	
 	public String getLocation() {
 		return location;
 	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
+	
 	public double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
+	
 	public String getHotelName() {
 		return hotelName;
 	}
-	public void setHotelName(String hotelName) {
-		this.hotelName = hotelName;
-	}
-	
 
-	public static List<Hotel> search(String dateOfStay, String location) {
+	public static List<Hotel> search(String location, String dateOfStay) {
 		
 		List<Hotel> matchingHotels = new ArrayList<>();
 		
@@ -91,15 +77,17 @@ public class Hotel {
 		
 	}
 	
-	public static void printHotel(Hotel hotel)
-	{
-		System.out.println(
-				hotel.getHotelName() + " at " +
-				hotel.getLocation() + " with " +
-				hotel.getRoomType() + " Room on " +
-				hotel.getAvailableDate() + " for $" +
-				hotel.getPrice() + " per night"
-				);
+	// method to return the stringify version of the hotel object
+	@Override
+	public final String toString() {
+		String s = (
+				getHotelName() + " at " +
+				getLocation() + " with " +
+				getRoomType() + " Room on " +
+				getAvailableDate() + " for $" +
+				getPrice() + " per night"
+		);	
+		return s;
 	}
 	
 	public static List<Hotel> filter(List<Hotel> hotels, double maxPrice, String roomType)
