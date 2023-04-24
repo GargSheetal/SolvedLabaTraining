@@ -81,21 +81,4 @@ public final class FlightReservation extends Reservation implements IFlightReser
 		return s;
 	}
 
-//	public static void printFlightReservation(FlightReservation flightReservation) {
-//		System.out.println("\nFlight Reservation Id : " + flightReservation.getReservationId() + " -----");
-//		Flight.printFlight(flightReservation.flight);
-//		System.out.println(
-//				"Customer : " + 
-//				flightReservation.customerName + " | " + 
-//				flightReservation.customerEmail + " | " +
-//				flightReservation.customerPhone
-//		);
-//		System.out.println(
-//				"Additional Services : " +
-//				"\n needMealService : " + flightReservation.needMealService +
-//				"\n needSpecialAssistance : " + flightReservation.needSpecialAssistance
-//		);
-//	}
-	
-
 }

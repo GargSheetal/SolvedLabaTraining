@@ -61,22 +61,6 @@ public final class Hotel {
 				
 	}
 	
-	public static void printHotelList(List<Hotel> hotels)
-	{
-		for(Hotel hotel: hotels)
-		{
-			System.out.println(
-					(hotels.indexOf(hotel) + 1) + " | " +
-					hotel.getHotelName() + " at " +
-					hotel.getLocation() + " with " +
-					hotel.getRoomType() + " Room on " +
-					hotel.getAvailableDate() + "for $" +
-					hotel.getPrice() + " per night"
-					);
-		}
-		
-	}
-	
 	// method to return the stringify version of the hotel object
 	@Override
 	public final String toString() {

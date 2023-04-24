@@ -42,21 +42,6 @@ public class CarReservation extends Reservation implements ICarReservation {
 		
 	}
 
-//	public static void printCarReservation(CarReservation carReservation) {
-//		System.out.println("\nCar Reservation Id : " + carReservation.getReservationId() + " -----");
-//		Car.printCar(carReservation.car);
-//		System.out.println(
-//				"Customer : " + 
-//				carReservation.customerName + " | " + 
-//				carReservation.customerEmail + " | " +
-//				carReservation.customerPhone
-//		);
-//		System.out.println(
-//				"Additional Services : " +
-//				"\n needCarSeat : " + carReservation.needCarSeat
-//		);
-//	}
-	
 	// overriding toString method to return stringify version of Car Reservation details
 	@Override
 	public String toString() {

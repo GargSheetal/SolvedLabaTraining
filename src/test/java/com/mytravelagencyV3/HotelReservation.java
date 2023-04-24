@@ -26,7 +26,6 @@ public class HotelReservation extends Reservation implements IHotelReservation {
 		return needFreeBreakfast;
 	}
 	
-	@Override
 	public void setNeedFreeBreakfast(boolean needFreeBreakfast) {
 		this.needFreeBreakfast = needFreeBreakfast;
 	}
@@ -35,7 +34,6 @@ public class HotelReservation extends Reservation implements IHotelReservation {
 		return needFreeInternet;
 	}
 
-	@Override
 	public void setNeedFreeInternet(boolean needFreeInternet) {
 		this.needFreeInternet = needFreeInternet;
 	}
@@ -76,21 +74,4 @@ public class HotelReservation extends Reservation implements IHotelReservation {
 		return s;
 	}
 
-	
-//	public static void printHotelReservation(HotelReservation hotelReservation) {
-//		System.out.println("\nHotel Reservation Id : " + hotelReservation.getReservationId() + " -----");
-//		Hotel.printHotel(hotelReservation.hotel);
-//		System.out.println(
-//				"Customer : " + 
-//				hotelReservation.customerName + " | " + 
-//				hotelReservation.customerEmail + " | " +
-//				hotelReservation.customerPhone
-//		);
-//		System.out.println(
-//				"Additional Services : " +
-//				"\n freeBreakfast : " + hotelReservation.freeBreakfast +
-//				"\n freeInternet : " + hotelReservation.freeInternet
-//		);
-//	}
-	
 }

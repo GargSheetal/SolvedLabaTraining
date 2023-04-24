@@ -31,7 +31,6 @@ public class Main {
 					flight.toString()
 					);
 		}
-//		Flight.printFlightList(searchFlightResults);
 		
 		System.out.println("\nSet Filters : ");
 		
@@ -43,7 +42,7 @@ public class Main {
 		
 		List<Flight> filterFlightResults = Flight.filter(searchFlightResults, maxPrice, maxNoOfStops);
 		System.out.println("\nFiltered Results -----");
-//		Flight.printFlightList(filterFlightResults);
+
 		for(Flight flight: filterFlightResults)
 		{
 			System.out.println(
@@ -57,7 +56,6 @@ public class Main {
 		
 		Flight selectedFlight = filterFlightResults.get(selectedFlightIdx - 1);
 		System.out.println("\nFlight Selected -----");
-//		Flight.printFlight(selectedFlight);
 		System.out.println(selectedFlight.toString());
 		
 		System.out.print("\nCustomer Name : ");
@@ -72,7 +70,6 @@ public class Main {
 		System.out.print("needMealService : ");
 		Boolean needMealService = scanner.nextBoolean();scanner.nextLine();
 	
-//		FlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight, customerName, customerEmail, customerPhone);
 		IFlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight);
 		flightReservation.getCustomer().setCustomerName(customerName);
 		flightReservation.getCustomer().setCustomerEmail(customerEmail);
@@ -80,7 +77,6 @@ public class Main {
 		flightReservation.setNeedSpecialAssistance(needSpecialAssistance);
 		flightReservation.setNeedMealService(needMealService);
 		flightReservation.confirmReservation();
-//		FlightReservation.printFlightReservation(flightReservation);
 		System.out.println(flightReservation.toString());
 		return flightReservation;
 		
@@ -105,8 +101,6 @@ public class Main {
 					);
 		}
 		
-	//	Hotel.printHotelList(searchHotelResults);
-		
 		System.out.println("\nSet Filters : ");
 		System.out.print("Enter max price : ");
 		double maxPrice = scanner.nextDouble(); scanner.nextLine();
@@ -124,7 +118,6 @@ public class Main {
 						hotel.toString()
 					);
 		}
-	//	Hotel.printHotelList(filteredHotelResults);
 		
 		System.out.print("Select your hotel : ");
 		int selectedHotelIdx = scanner.nextInt();scanner.nextLine();
@@ -171,7 +164,6 @@ public class Main {
 		
 		List<Car> searchCarResults = Car.search(location, pickupDate, dropOffDate);
 		System.out.println("\nSearch Results -----");
-		//Car.printCarList(searchCarResults);
 		for(Car car: searchCarResults)
 		{
 			System.out.println(
@@ -189,7 +181,7 @@ public class Main {
 		
 		List<Car> filteredCarResults = Car.filter(searchCarResults, maxPrice, carType);
 		System.out.println("\nFiltered results: ");
-	//	Car.printCarList(filteredCarResults);
+
 		for(Car car: filteredCarResults)
 		{
 			System.out.println(
@@ -255,7 +247,6 @@ public class Main {
 			default: break;
 			
 		}
-
 	}
 	
 	
