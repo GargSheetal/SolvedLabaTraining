@@ -2,6 +2,7 @@ package com.mytravelagencyV3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author sheetal
@@ -74,7 +75,6 @@ public final class Flight {
 		}
 		
 		return matchingFlights;
-			
 	}
 	
 	@Override
@@ -90,15 +90,19 @@ public final class Flight {
 		}
 		
 		Flight f = (Flight)o;
-		return this.departureTimestamp.substring(0, 10).equals(f.departureTimestamp);
+		return Objects.equals(originAirport, f.originAirport) &&
+				Objects.equals(destinationAirport, f.destinationAirport) &&
+				Objects.equals(departureTimestamp, f.departureTimestamp) &&
+				Objects.equals(arrivalTimestamp, f.arrivalTimestamp) &&
+				Objects.equals(flightNumber, f.flightNumber) &&
+				Objects.equals(price, f.price) &&
+				Objects.equals(noOfStops, f.noOfStops);
 		
 	}
 	
 	@Override
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + departureTimestamp.hashCode();
-        return result;
+        return Objects.hash(originAirport, destinationAirport, departureTimestamp, arrivalTimestamp, flightNumber, price, noOfStops);
     }
 	
 	// method to return the stringify version of the flight object

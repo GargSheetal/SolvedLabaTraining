@@ -117,6 +117,33 @@ public final class Car {
 		return matchingCars;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		
+		if(this == o)
+		{
+			return true;
+		}
+		if(!(o instanceof Hotel))
+		{
+			return false;
+		}
+		
+		Car c = (Car) o;
+		return this.carType.equals(c.carType) && this.price == c.price;
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		
+        final int prime = 31;
+        int result = 1;
+        result = (int) (prime * result + price);
+        result = prime * result + ((carType == null) ? 0 : carType.hashCode());
+        return result;
+    }
+	
 	static Car[] cars = {
 			new Car("Newyork", "2023-05-23", "2023-05-26", 30, "Sedan"),
 			new Car("Newyork", "2023-05-23", "2023-05-26", 30, "SUV"),

@@ -2,6 +2,7 @@ package com.mytravelagencyV3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -88,6 +89,30 @@ public final class Hotel {
 		return matchingHotels;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		
+		if(this == o)
+		{
+			return true;
+		}
+		if(!(o instanceof Hotel))
+		{
+			return false;
+		}
+		
+		Hotel h = (Hotel) o;
+		return this.hotelName.equals(h.hotelName) && this.location.equals(h.location) && 
+			   this.roomType.equals(h.roomType) && this.availableDate.equals(h.availableDate) &&
+			   this.price == h.price;
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return Objects.hash(hotelName, location, roomType, availableDate, price);
+	}
 	
 	static Hotel[] hotels = {
 			new Hotel("Hilton", "Miami", "Queen", "2023-05-23", 101),
