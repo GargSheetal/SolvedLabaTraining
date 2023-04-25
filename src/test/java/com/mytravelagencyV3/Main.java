@@ -67,14 +67,19 @@ public class Main {
 		
 		System.out.print("Select 1st seat : ");
 		String selectedSeat1 = scanner.nextLine();
-		selectedFlight.seatOccupancyMap.put(new Seat(selectedSeat1), customerName);
+		Seat seat1 = new Seat(selectedSeat1);
+		selectedFlight.seatOccupancyMap.put(seat1, customerName);
 		System.out.println("1st Seat : " + selectedSeat1 + " | Occupied seat count : " + selectedFlight.seatOccupancyMap.size());
 		
 		System.out.print("Select 2nd seat : ");
 		String selectedSeat2 = scanner.nextLine();
-		selectedFlight.seatOccupancyMap.put(new Seat(selectedSeat2), customerName);
+		Seat seat2 = new Seat(selectedSeat2);
+		selectedFlight.seatOccupancyMap.put(seat2, customerName);
 		System.out.println("2nd Seat : " + selectedSeat2 + " | Occupied seat count : " + selectedFlight.seatOccupancyMap.size());
 			
+		boolean isSeatSame = seat1.equals(seat2);
+		System.out.println("Are the seats same : " + isSeatSame);
+		
 		System.out.print("needSpecialAssistance : ");
 		Boolean needSpecialAssistance = scanner.nextBoolean();scanner.nextLine();
 		System.out.print("needMealService : ");
