@@ -65,6 +65,16 @@ public class Main {
 		System.out.print("Customer Phone : ");
 		String customerPhone = scanner.nextLine();
 		
+		System.out.print("Select 1st seat : ");
+		String selectedSeat1 = scanner.nextLine();
+		selectedFlight.seatOccupancyMap.put(new Seat(selectedSeat1), customerName);
+		System.out.println("1st Seat : " + selectedSeat1 + " | Occupied seat count : " + selectedFlight.seatOccupancyMap.size());
+		
+		System.out.print("Select 2nd seat : ");
+		String selectedSeat2 = scanner.nextLine();
+		selectedFlight.seatOccupancyMap.put(new Seat(selectedSeat2), customerName);
+		System.out.println("2nd Seat : " + selectedSeat2 + " | Occupied seat count : " + selectedFlight.seatOccupancyMap.size());
+			
 		System.out.print("needSpecialAssistance : ");
 		Boolean needSpecialAssistance = scanner.nextBoolean();scanner.nextLine();
 		System.out.print("needMealService : ");

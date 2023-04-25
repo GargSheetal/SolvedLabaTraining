@@ -1,7 +1,9 @@
 package com.mytravelagencyV3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -18,7 +20,9 @@ public final class Flight {
 	private final String flightNumber;
 	private final double price;
 	private final int noOfStops;
-
+	
+	Map<Seat, String> seatOccupancyMap = new HashMap<>();
+	
 	public Flight( String flightNumber, String originAirport, String destinationAirport, String departureTimestamp, 
 			String arrivalTimestamp, int noOfStops, double price) {
 		this.originAirport = originAirport;
