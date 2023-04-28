@@ -1,0 +1,2 @@
+2023-04-28 12:32:40.110 [main] INFO  com.mytravelagencyV4.Main - Presenting Main Menu
+2023-04-28 12:34:58.010 [main] ERROR com.mytravelagencyV4.Main - Flight cannot be reserved. MissingInputException : !! Error... Customer Name is Missing !!

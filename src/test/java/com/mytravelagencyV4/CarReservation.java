@@ -1,8 +1,9 @@
 /**
  * 
  */
-package com.mytravelagencyV3;
+package com.mytravelagencyV4;
 
+import com.travelagency.customexceptions.MissingInputException;
 
 /**
  * @author sheetal
@@ -31,7 +32,21 @@ public class CarReservation extends Reservation implements ICarReservation {
 	}
 
 	@Override
-	public void confirmReservation() {
+	public void confirmReservation() throws MissingInputException {
+		
+		if(getCustomer().getCustomerName().isEmpty())
+		{
+			throw new MissingInputException("!! Error... Customer Name is Missing !!");
+		}
+		if(getCustomer().getCustomerEmail().isEmpty()) 
+		{
+			throw new MissingInputException("!! Error... Customer Email is Missing !!");
+		}
+		if(getCustomer().getCustomerPhone().isEmpty()) 
+		{
+			throw new MissingInputException("!! Error... Customer Phone Number is Missing !!");
+		}
+		
 		System.out.println("\n[SYSTEM] - Car is Booked : ");
 		System.out.println(this.car.toString());
 	}

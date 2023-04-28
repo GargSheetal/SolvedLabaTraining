@@ -1,0 +1,18 @@
+2023-04-28 12:32:40.110 [main] INFO  com.mytravelagencyV4.Main - Presenting Main Menu
+2023-04-28 12:32:50.004 [main] TRACE com.mytravelagencyV4.Main - Flight Reservation started
+2023-04-28 12:32:53.798 [main] DEBUG com.mytravelagencyV4.Main - originAirport: ewr
+2023-04-28 12:33:00.422 [main] DEBUG com.mytravelagencyV4.Main - destinationAirport: mia
+2023-04-28 12:33:09.660 [main] DEBUG com.mytravelagencyV4.Main - departureDate: 2023-05-23
+2023-04-28 12:33:09.668 [main] TRACE com.mytravelagencyV4.Main - Flight search results fetched
+2023-04-28 12:33:15.694 [main] DEBUG com.mytravelagencyV4.Main - maxPrice: 400.0
+2023-04-28 12:33:19.507 [main] DEBUG com.mytravelagencyV4.Main - maxNoOfStops: 3
+2023-04-28 12:33:19.507 [main] TRACE com.mytravelagencyV4.Main - Flight search results filtered
+2023-04-28 12:33:23.599 [main] DEBUG com.mytravelagencyV4.Main - Flight Selected: AI103 from EWR (2023-05-23T03:00:00.000Z) to MIA (2023-05-23T13:00:00.000Z) with 3 stops, $ 333.0
+2023-04-28 12:33:23.624 [main] DEBUG com.mytravelagencyV4.Main - Flight reservation initiated : cd9f1027-04f1-47c5-b4e8-e7df0ee42674
+2023-04-28 12:33:28.227 [main] DEBUG com.mytravelagencyV4.Main - Customer Name: 
+2023-04-28 12:34:20.905 [main] DEBUG com.mytravelagencyV4.Main - Customer Email: sg@gmail.com
+2023-04-28 12:34:25.652 [main] DEBUG com.mytravelagencyV4.Main - Customer Phone: 5657678689
+2023-04-28 12:34:44.972 [main] DEBUG com.mytravelagencyV4.Main - Seat Selected: Seat - A2
+2023-04-28 12:34:54.841 [main] DEBUG com.mytravelagencyV4.Main - needSpecialAssistance: false
+2023-04-28 12:34:58.010 [main] DEBUG com.mytravelagencyV4.Main - needMealService: true
+2023-04-28 12:34:58.010 [main] ERROR com.mytravelagencyV4.Main - Flight cannot be reserved. MissingInputException : !! Error... Customer Name is Missing !!
