@@ -19,7 +19,7 @@ public class Main {
 	
 	private static IFlightReservation flightReservationMenuItem() {
 		
-		logger.trace("Flight Reservation started -");
+		logger.info("\nFlight Reservation started -----");
 		String originAirport = FlightReservationMenu.readOriginAirports();
 		logger.debug("originAirport: {}", originAirport);
 	
@@ -66,8 +66,7 @@ public class Main {
 		
 		Flight selectedFlight = filterFlightResults.get(selectedFlightIdx - 1);
 		logger.info("\nFlight Selected -----");
-	//	System.out.println(selectedFlight.toString());
-		logger.info("Flight Selected: {}", selectedFlight.toString());
+		logger.info(selectedFlight.toString());
 		
 		IFlightReservation flightReservation = ReservationFactory.createFlightReservation(selectedFlight);
 		logger.debug("Flight reservation initiated : {}", flightReservation.getReservationId());
@@ -94,7 +93,7 @@ public class Main {
 		try {
 			FlightReservationMenu.requestAddBusinessClassSeat(selectedFlight);
 		} catch (InvalidStateException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		
 		logger.info("\nneedSpecialAssistance : ");
@@ -106,22 +105,19 @@ public class Main {
 		Boolean needMealService = scanner.nextBoolean();scanner.nextLine();
 		flightReservation.setNeedMealService(needMealService);
 		logger.debug("needMealService: {}", needMealService);
-		
+
 		try {
 			flightReservation.confirmReservation();
-		//	System.out.println(flightReservation.toString());
-			logger.info("\nFlight is reserved: {}", flightReservation.toString());
+//			logger.info("\nFlight is reserved: {}", flightReservation.toString());
 		} catch (MissingInputException e) {
 			flightReservation = null;
-			System.out.println("\nMissingInputException : " + e.getMessage());
 			logger.error("Flight cannot be reserved. MissingInputException : {}", e.getMessage());
 		}
 		return flightReservation;
 	}
 	
 	private static IHotelReservation hotelReservationMenuItem() {
-		
-		logger.trace("Hotel Reservation started");
+		logger.info("\nHotel Reservation started -----");
 		logger.info("Enter location : ");
 		String location = scanner.nextLine();
 		logger.debug("location: {}", location);
@@ -135,7 +131,7 @@ public class Main {
 		
 		for(Hotel hotel: searchHotelResults)
 		{
-			System.out.println(
+			logger.info(
 					(searchHotelResults.indexOf(hotel) + 1) + " | " +
 					hotel.toString()
 					);
@@ -166,10 +162,9 @@ public class Main {
 		logger.info("Select your hotel : ");
 		int selectedHotelIdx = scanner.nextInt();scanner.nextLine();
 		
-		logger.info("Hotel Selected");
 		Hotel selectedHotel = filteredHotelResults.get(selectedHotelIdx - 1);
 		logger.info("\nHotel Selected -----");
-		logger.info("Hotel Selected: {}", selectedHotel.toString());
+		logger.info(selectedHotel.toString());
 		
 		IHotelReservation hotelReservation = ReservationFactory.createHotelReservation(selectedHotel);
 		logger.debug("Hotel reservation initiated : {}", hotelReservation.getReservationId());
@@ -200,10 +195,8 @@ public class Main {
 	
 		try {
 			hotelReservation.confirmReservation();
-			logger.info("\nHotel is reserved: {}", hotelReservation.toString());
 		} catch (MissingInputException e) {
 			hotelReservation = null;
-			System.out.println("\nMissingInputException : " + e.getMessage());
 			logger.error("Hotel cannot be reserved. MissingInputException : {}", e.getMessage());
 		}
 		return hotelReservation;
@@ -211,7 +204,7 @@ public class Main {
 	
 	private static ICarReservation carReservationMenuItem() throws MissingInputException {
 		
-		logger.trace("Car Reservation started");
+		logger.info("\nCar Reservation started -----");
 		logger.info("Enter location : ");
 		String location = scanner.nextLine();
 		logger.debug("location: {}", location);
@@ -260,8 +253,8 @@ public class Main {
 		int selectedCarIdx = scanner.nextInt();scanner.nextLine();
 		
 		Car selectedCar = filteredCarResults.get(selectedCarIdx - 1);
-		System.out.println("\nCar Selected -----");
-		logger.info("Flight Selected: {}", selectedCar.toString());
+		logger.info("\nCar Selected -----");
+		logger.info(selectedCar.toString());
 		
 		ICarReservation carReservation = ReservationFactory.createCarReservation(selectedCar);
 		logger.debug("Car reservation initiated : {}", carReservation.getReservationId());
@@ -287,10 +280,8 @@ public class Main {
 		
 		try {
 			carReservation.confirmReservation();
-			logger.info("\nCar is reserved: {}", carReservation.toString());
 		} catch (MissingInputException e) {
 			carReservation = null;
-			System.out.println("\nMissingInputException : " + e.getMessage());
 			logger.error("Car cannot be reserved. MissingInputException : {}", e.getMessage());
 		}
 		return carReservation;
@@ -308,7 +299,7 @@ public class Main {
 	private static void mainMenu() throws MissingInputException {
 		
 		logger.info("Presenting Main Menu");
-		System.out.print(
+		logger.info(
 			"\n Main Menu -----" + 
 			"\n 1. Flight Reservation" + 
 			"\n 2. Hotel Reservation" +
@@ -319,9 +310,18 @@ public class Main {
 		int mainMenuResponse = scanner.nextInt(); scanner.nextLine();
 		
 		switch(mainMenuResponse) {
-			case 1: trip.addReservation(flightReservationMenuItem()); addMoreTripReservations(); break;
-			case 2: trip.addReservation(hotelReservationMenuItem()); addMoreTripReservations(); break;
-			case 3: trip.addReservation(carReservationMenuItem()); addMoreTripReservations(); break;
+			case 1:
+				IFlightReservation flightReservation = flightReservationMenuItem();
+				trip.getFlightReservations().addReservation(flightReservation, flightReservation.getFlight().getPrice()); 
+				addMoreTripReservations(); break;
+			case 2: 
+				IHotelReservation hotelReservation = hotelReservationMenuItem();
+				trip.getHotelReservations().addReservation(hotelReservation, hotelReservation.getHotel().getPrice()); 
+				addMoreTripReservations(); break;
+			case 3: 
+				ICarReservation carReservation = carReservationMenuItem();
+				trip.getCarReservations().addReservation(carReservation, carReservation.getCar().getPrice()); 
+				addMoreTripReservations(); break;
 			default: break;
 			
 		}
@@ -331,7 +331,7 @@ public class Main {
 	public static void main(String[] args) throws MissingInputException {	
 		
 		mainMenu();
-		trip.printTrip(trip);
+		logger.info(trip.toString());
 		scanner.close();
 				
 	}

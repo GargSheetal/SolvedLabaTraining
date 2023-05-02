@@ -47,8 +47,8 @@ public class CarReservation extends Reservation implements ICarReservation {
 			throw new MissingInputException("!! Error... Customer Phone Number is Missing !!");
 		}
 		
-		System.out.println("\n[SYSTEM] - Car is Booked : ");
-		System.out.println(this.car.toString());
+		System.out.println("\n[SYSTEM] - Car Reservation Confirmed : ");
+		System.out.println(this.toString());
 	}
 	
 	@Override

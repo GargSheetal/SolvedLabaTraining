@@ -98,7 +98,6 @@ public final class Car {
 	@Override
 	public final String toString() {
 		String s = (
-				"Booked " +
 				getCarType() + " at " +
 				getLocation() + " (" +
 				getPickupDate() + " - " +

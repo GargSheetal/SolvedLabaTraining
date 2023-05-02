@@ -181,7 +181,7 @@ public final class Flight {
 			{
 				Seat seat = entry.getKey();
 				seatOccupancyMap.remove(seat);
-				System.out.println("Customer(" + customerEmail + ") is unassigned from " + seat.toString() + " of flight " + this.flightNumber);
+				System.out.println("\n   | Customer(" + customerEmail + ") is unassigned from " + seat.toString() + " of flight " + this.flightNumber);
 			}
 		}
 	}
@@ -217,12 +217,12 @@ public final class Flight {
 	}
 	
 	public void addToQueueForUpgradeToBusinessClass(String customerEmail) {
-		System.out.println("Customer(" + customerEmail + ") added to queue for upgrade to Business Class " + this.flightNumber);
+		System.out.println("\n   | Customer(" + customerEmail + ") added to queue for upgrade to Business Class for flight " + this.flightNumber);
 		queueForUpgradeToBusinessClass.add(customerEmail);
 	}
 	
 	public void removeFromQueueForUpgradeToBusinessClass(String customerEmail) {
-		System.out.println("Customer(" + customerEmail + ") removed from queue for upgrade to Business Class " + this.flightNumber);
+		System.out.println("\n   | Customer(" + customerEmail + ") removed from queue for upgrade to Business Class for flight " + this.flightNumber);
 		queueForUpgradeToBusinessClass.remove(customerEmail);
 	}
 	

@@ -74,7 +74,7 @@ public final class FlightReservation extends Reservation implements IFlightReser
 		}
 		
 		System.out.println("\n[SYSTEM] - Flight Reservation Confirmed :");
-		System.out.println(this.flight.toString());
+		System.out.println(this.toString());
 		
 	}
 
@@ -99,6 +99,8 @@ public final class FlightReservation extends Reservation implements IFlightReser
 				this.customer.getCustomerEmail() + " | " +
 				this.customer.getCustomerPhone()
 		 +
+		"\n" +
+		 	this.seat.toString() + 
 		"\n" +
 		
 				"Additional Services : " +

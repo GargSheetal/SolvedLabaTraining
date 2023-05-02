@@ -3,18 +3,14 @@
  */
 package com.mytravelagencyV5;
 
-import java.util.List;
-
 /**
  * @author sheetal
  *
  */
-public interface ITrip<T> {
-	
+public interface ITrip {
+	String getTripId();
 	double getTotalAmount();
-	void addReservation(T reservation);
-	
-//	void addFlightReservation(T flightReservation);
-//	void addHotelReservation(T hotelReservation);
-//	void addCarReservation(T carReservation);
+	ReservationList<IFlightReservation> getFlightReservations();
+	ReservationList<IHotelReservation> getHotelReservations();
+	ReservationList<ICarReservation> getCarReservations();
 }

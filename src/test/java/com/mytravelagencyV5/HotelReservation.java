@@ -56,7 +56,7 @@ public class HotelReservation extends Reservation implements IHotelReservation {
 		}
 		
 		System.out.println("\n[SYSTEM] - Hotel Reservation Confirmed : ");
-		System.out.println(this.hotel.toString());
+		System.out.println(this.toString());
 		
 	}
 
