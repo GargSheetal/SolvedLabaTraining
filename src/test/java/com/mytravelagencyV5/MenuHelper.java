@@ -1,13 +1,10 @@
-package com.mytravelagency.utilities;
+package com.mytravelagencyV5;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import com.mytravelagencyV4.Flight;
-import com.mytravelagencyV4.Seat;
 import com.travelagency.customexceptions.InputDoesNotMatchException;
 import com.travelagency.customexceptions.InvalidInputException;
-import com.travelagency.customexceptions.InvalidStateException;
 
 public class MenuHelper {
 	
@@ -58,23 +55,4 @@ public class MenuHelper {
 		
 	}
 	
-	public static Seat requestSeatNumber(Flight flight, String email) {
-
-		System.out.print("Select a seat : ");
-
-		String selectedSeat = scanner.nextLine();
-		Seat seat = new Seat(selectedSeat);
-
-		try {
-			flight.addSeatOccupancy(seat, email);
-			System.out.println("Seat selected : " + seat.getSeatNumber() + " | Occupied seat count : " + flight.seatOccupancyMap.size());
-			System.out.println(flight.seatOccupancyMap.toString());
-		} catch (InvalidStateException e) {
-			System.out.println("\nInvalidStateException : " + e.getMessage());
-			System.out.println("Enter input again....");
-			seat = requestSeatNumber(flight, email);
-		}
-		return seat;
-	}
-
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mytravelagencyV4;
+package com.mytravelagencyV5;
 
 
 import com.travelagency.customexceptions.MissingInputException;
@@ -73,7 +73,7 @@ public final class FlightReservation extends Reservation implements IFlightReser
 			throw new MissingInputException("!! Error... Seat is Not Selected !!");
 		}
 		
-		System.out.println("\n[SYSTEM] - Flight Reservation Confirmed : ");
+		System.out.println("\n[SYSTEM] - Flight Reservation Confirmed :");
 		System.out.println(this.flight.toString());
 		
 	}
@@ -105,8 +105,6 @@ public final class FlightReservation extends Reservation implements IFlightReser
 				"\n needMealService : " + this.needMealService +
 				"\n needSpecialAssistance : " + this.needSpecialAssistance
 		;
-		
 		return s;
 	}
-
 }

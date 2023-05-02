@@ -1,15 +1,13 @@
 /**
  * 
  */
-package com.mytravelagencyV4;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.mytravelagencyV5;
 
 import com.travelagency.customexceptions.MissingInputException;
 
 /**
  * @author sheetal
+ * 
  *
  */
 public interface IReservation {
@@ -19,5 +17,4 @@ public interface IReservation {
 	String getReservationId();
 	String toString();
 	Customer getCustomer();
-
 }
